@@ -1,0 +1,41 @@
+@use 'variables' as *;
+
+:root {
+    color-scheme: light;
+    --color-bg: #ffffff;
+    --color-bg-muted: #f9fafb;
+    --color-text: #111827;
+    --color-text-muted: #4b5563;
+    --color-border: #e5e7eb;
+    --color-card-bg: #ffffff;
+    --color-header-bg: rgba(255, 255, 255, 0.85);
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+
+    --color-primary: #{$color-primary};
+    --color-success: #{$color-success};
+    --color-info: #{$color-info};
+    --color-warning: #{$color-warning};
+
+    --btn-primary-bg: var(--color-primary);
+    --btn-primary-text: #ffffff;
+    --btn-outline-border: var(--color-border);
+    --btn-outline-text: var(--color-text);
+
+}
+
+[data-theme='dark'] {
+    color-scheme: dark;
+    --color-bg: #0f172a;
+    --color-bg-muted: #1e293b;
+    --color-text: #f8fafc;
+    --color-text-muted: #94a3b8;
+    --color-border: #334155;
+    --color-card-bg: #1e293b;
+    --color-header-bg: rgba(15, 23, 42, 0.9);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+
+    --btn-outline-border: var(--color-border);
+    --btn-outline-text: var(--color-text);
+}
