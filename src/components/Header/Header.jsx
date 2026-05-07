@@ -27,6 +27,21 @@ const Header = () => {
             </NavLink>
           ))}
         </nav>
+        <div className={styles.actions}>
+          <button type='button' className={styles.btnOutline}>
+            Resume
+          </button>
+          <button type='button' className={styles.btnPrimary}>
+            Hire me
+          </button>
+          <button
+          className={styles.themeToggle}
+          onClick={toggleTheme}
+          aria-label={theme === 'dark' ? 'switch to light mode' : 'switch to dark mode'}
+          >
+            {theme == 'dark' ? 'light' : 'Dark'}
+          </button>
+        </div>
       </div>
     </header>
   )
