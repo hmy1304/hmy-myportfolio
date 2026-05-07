@@ -11,7 +11,7 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.inner}>
         <NavLink to="/" className={styles.logo} end>
-          <div className={styles.title_logo}/>
+          <div className={styles.title_logo}>h</div>
           민엽.P
         </NavLink>
         <nav className={styles.nav} aria-label='Main'>
