@@ -14,7 +14,19 @@ const Header = () => {
           <div className={styles.title_logo}/>
           민엽.P
         </NavLink>
-        
+        <nav className={styles.nav} aria-label='Main'>
+          {navItems.map(({to, label})=>(
+            <NavLink
+            to={to}
+            key={to}
+            className={({isActive})=>
+              isActive ? `${styles.link} ${styles.linkActive}` : styles.link
+            }
+            >
+              {label}
+            </NavLink>
+          ))}
+        </nav>
       </div>
     </header>
   )

@@ -5,6 +5,7 @@ import Skills from "./pages/Skills"
 import Projects from "./pages/Projects"
 import Together from "./pages/Together"
 import PlaceholderPage from "./pages/PlaceholderPage"
+import ThemeProvider from "./context/ThemeProvider"
 
 import Layout from "./components/layout/Layout"
 
@@ -21,19 +22,21 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<Layout/>}>
-          <Route index element={<Home/>}/>
-          <Route path="intro" element={<Intro/>}/>
-          <Route path="skills" element={<Skills/>}/>
-          <Route path="projects" element={<Projects/>}/>
-          <Route path="together" element={<Together/>}/>
-          <Route path="primary" element={<PlaceholderPage title="Privacy"/>}/>
-          <Route path="terms" element={<PlaceholderPage title="Terms"/>}/>
-          <Route path="404" element={<NotFound/>}/>
-          <Route path="*" element={<Navigate to="/404" replace/>}/>
-        </Route>
-      </Routes>
+      <ThemeProvider>
+        <Routes>
+          <Route element={<Layout/>}>
+            <Route index element={<Home/>}/>
+            <Route path="intro" element={<Intro/>}/>
+            <Route path="skills" element={<Skills/>}/>
+            <Route path="projects" element={<Projects/>}/>
+            <Route path="together" element={<Together/>}/>
+            <Route path="primary" element={<PlaceholderPage title="Privacy"/>}/>
+            <Route path="terms" element={<PlaceholderPage title="Terms"/>}/>
+            <Route path="404" element={<NotFound/>}/>
+            <Route path="*" element={<Navigate to="/404" replace/>}/>
+          </Route>
+        </Routes>
+      </ThemeProvider>
     </BrowserRouter>
   )
 }
