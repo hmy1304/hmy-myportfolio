@@ -45,9 +45,18 @@ ul,ol,dl {
   position: relative;
 }
 
+p.sub-tit {
+  font-size: clamp(2rem, 3vw, 4rem);
+  line-height: 1;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
 h1.tit {
   font-size: clamp(3rem,4vw,4.5rem);
   line-height: 1.05;
+  font-weight: 900;
+  color: var(--color-primary);
   &__m {
     font-size: clamp(2.8rem, 3.6vw,4rem);
   }
@@ -56,5 +65,15 @@ p.txt{
   margin: 0;
   font-size: clamp(1.3rem,1.4vw,1.5rem);
   line-height: 1.6;
-  color:var(--color-text-muted)
+  color:var(--color-text-txt)
+}
+
+.badge {
+  font-size: $font-size-2xl;
+  font-weight: 700;
+  transform: rotate(90deg);
+  padding: 0 0 0 $space-5;
+  margin: 0;
+  border-radius: 0;
+  border-left: 2px solid var(--color-text);
 }

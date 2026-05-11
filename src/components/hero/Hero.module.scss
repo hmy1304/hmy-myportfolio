@@ -1,0 +1,22 @@
+.hero {
+    position: relative;
+    overflow: hidden;
+    // min-height: 100vh;
+    overflow: hidden;
+    // display: flex;
+    // justify-content: center;
+
+    .badge {
+        position: absolute;
+        right: -20rem;
+        bottom: 5rem;
+    }
+
+    .canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+}
