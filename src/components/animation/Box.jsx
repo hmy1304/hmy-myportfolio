@@ -22,7 +22,7 @@ const Box = ({scale=1, ...props}) => {
     onPointerOver={()=>setHover(true)}
     onPointerOut={()=>setHover(false)}
     >
-        <dodecahedronGeometry args={[1.5, 0]}/>
+        <dodecahedronGeometry args={[2, 1]}/>
         <meshStandardMaterial 
         color={hovered ? "#00f5ff" : "#b388ff"}
         emissive={hovered ? "#00f5ff" : "#5b2cff"}
