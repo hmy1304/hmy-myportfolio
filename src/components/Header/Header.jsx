@@ -17,7 +17,7 @@ const Header = () => {
             <div className={styles.headMenu}>
                 <nav className={styles.nav} aria-label='Main'>
                     {navItems.map(({to, label})=>(
-                        <NabLink
+                        <NavLink
                         to={to}
                         key={to}
                         className={({isActive})=>
@@ -25,7 +25,7 @@ const Header = () => {
                         }
                         >
                             {label}
-                        </NabLink>
+                        </NavLink>
                     ))}
                 </nav>
                 <div className={styles.actions}>
