@@ -34,10 +34,10 @@ const Hero = () => {
                 <Stats />
             </div>
             <div className={styles.canvas}>
-                <Canvas camera={{position:[0, 0, 4], fov:65}}>
+                <Canvas className={styles.canvas_anime} camera={{position:[0, 0, 4], fov:65}}>
                     <ambientLight intensity={0.7}/>
                     <pointLight position={[10, 10, 10]} intensity={1.5}/>
-                    <Box position={[0, 0.4, 0]} scale={0.75}/>
+                    <Box position={[0, 0.4, 0]} scale={0.5}/>
                 </Canvas>
             </div>
         </div>
