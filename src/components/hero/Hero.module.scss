@@ -4,14 +4,14 @@
   position: relative;
   overflow: hidden;
   min-height: calc(100vh - 6.4rem);
+  padding: $space-12 0;        // 다른 섹션과 동일한 상하 패딩
   display: flex;
   align-items: center;
 
   .inner {
     display: grid;
-    padding: $space-12 0;
     gap: $space-8;
-    align-items: center;
+    align-items: center;       // inner 자체 padding 제거 (section이 담당)
 
     @media (min-width: 900px) {
       grid-template-columns: 1fr 1fr;
@@ -25,7 +25,6 @@
     gap: $space-3;
   }
 
-  // 우측 고정 뱃지 (글로벌로 처리하므로 section 내 뱃지는 제거)
   .badge {
     position: absolute;
     right: -18rem;

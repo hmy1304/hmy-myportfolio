@@ -6,7 +6,7 @@
   .layout {
     display: grid;
     gap: $space-10;
-    align-items: start;
+    align-items: start;         // stretch → start: 높이 강제 맞춤 제거
 
     @media (min-width: 900px) {
       grid-template-columns: 1fr 1fr;
@@ -23,12 +23,8 @@
     }
   }
 
-  .stickyRight {
-    @media (min-width: 900px) {
-      position: sticky;
-      top: 10rem;
-    }
-
+  // sticky 완전 제거 — 그냥 일반 블록으로
+  .right {
     .desc {
       margin-top: $space-3;
     }
