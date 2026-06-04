@@ -1,0 +1,141 @@
+@use '../../styles/variables' as *;
+
+.form {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-sm;
+  padding: 3.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  transition: border-color 0.2s, $transition-theme;
+
+  &:focus-within {
+    border-color: rgba(93, 232, 237, 0.35);
+  }
+}
+
+.formTitle {
+  font-size: $font-size-xl;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.formDesc {
+  font-size: $font-size-xs;
+  color: var(--color-text-txt);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-2;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.fieldLabel {
+  font-size: $font-size-xs;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+}
+
+%input-base {
+  width: 100%;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-sm;
+  color: var(--color-text);
+  font-family: $font-sans;
+  font-size: $font-size-sm;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+
+  &::placeholder {
+    color: var(--color-text-txt);
+    opacity: 0.5;
+  }
+
+  &:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(93, 232, 237, 0.12);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.input {
+  @extend %input-base;
+  padding: 1rem 1.4rem;
+  height: 4.4rem;
+}
+
+.textarea {
+  @extend %input-base;
+  padding: 1.2rem 1.4rem;
+  resize: vertical;
+  min-height: 12rem;
+  line-height: 1.7;
+}
+
+.submitBtn {
+  align-self: flex-start;
+  gap: 0.8rem;
+  padding: 1.2rem 2.4rem;
+  font-size: $font-size-sm;
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.spinner {
+  display: inline-block;
+  width: 1.4rem;
+  height: 1.4rem;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.successMsg {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.4rem 1.8rem;
+  background: rgba(16, 185, 128, 0.1);
+  border: 1px solid rgba(16, 185, 128, 0.25);
+  border-radius: $radius-sm;
+  color: var(--color-success);
+  font-size: $font-size-sm;
+  font-weight: 600;
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    stroke: var(--color-success);
+  }
+}

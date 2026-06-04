@@ -1,38 +1,144 @@
 @use '../styles/variables' as *;
 
 .together {
-  padding: $space-12 0;
+  padding: $space-12 0 $space-16;
+  position: relative;
+  overflow: hidden;
+}
 
-  .layout {
-    display: grid;
-    gap: $space-10;
-    align-items: start;
+// ── 배경 글로우 효과 ──────────────────────
+.bgGlow {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80rem;
+  height: 40rem;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(93, 232, 237, 0.06) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
 
-    @media (min-width: 900px) {
-      grid-template-columns: 1fr 1fr;
-      gap: $space-16;
-    }
+// 내부 콘텐츠가 글로우 위에 오도록
+.together > .inner,
+.together > [class*="inner"] {
+  position: relative;
+  z-index: 1;
+}
+
+// ── 섹션 헤더 ─────────────────────────────
+.header {
+  text-align: center;
+  margin-bottom: $space-8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-2;
+
+  .headerDesc {
+    max-width: 52rem;
+    text-align: center;
+  }
+}
+
+.resumeBtn {
+  margin-top: $space-1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: $font-size-sm;
+}
+
+// ── 연락처 카드 행 (4개 가로) ─────────────
+.infoRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-2;
+  margin-bottom: $space-8;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .left {
-    .bigTitle {
-      font-size: clamp(4.5rem, 7vw, 8rem);
-    }
-
-    .desc {
-      margin-top: $space-4;
-    }
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
   }
+}
 
-  .right {
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: $space-2;
+// ── 하단: 폼 + SNS ────────────────────────
+.bottom {
+  display: grid;
+  gap: $space-4;
+  align-items: start;
 
-      @media (max-width: 500px) {
-        grid-template-columns: 1fr;
-      }
-    }
+  @media (min-width: 900px) {
+    grid-template-columns: 1fr 36rem;
+    gap: $space-6;
   }
+}
+
+// ── 문의 폼 래퍼 ──────────────────────────
+.formWrap {
+  min-width: 0;
+}
+
+// ── SNS 패널 ──────────────────────────────
+.snsWrap {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.snsTitle {
+  font-size: $font-size-xs;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.snsList {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+// ── 빠른 응답 메모 카드 ───────────────────
+.memo {
+  margin-top: $space-2;
+  display: flex;
+  gap: 1.6rem;
+  align-items: flex-start;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-primary);
+  border-radius: $radius-sm;
+  padding: 2rem 2.4rem;
+  transition: $transition-theme;
+}
+
+.memoIcon {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.memoTitle {
+  font-size: $font-size-sm;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 0.4rem;
+}
+
+.memoText {
+  font-size: $font-size-xs;
+  color: var(--color-text-txt);
+  line-height: 1.7;
+  margin: 0;
 }

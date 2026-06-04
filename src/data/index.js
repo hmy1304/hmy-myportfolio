@@ -15,7 +15,15 @@ export const contact = {
   email: 'hmy@gmail.com',
   github: 'github.com',
   location: '경기도 남양주시',
+  resumeUrl: '/resume.pdf',   // ← 실제 이력서 파일 경로로 교체
 }
+
+// SNS / 외부 링크
+export const snsLinks = [
+  { type: 'github',   label: 'GitHub',   url: 'https://github.com' },
+  { type: 'linkedin', label: 'LinkedIn', url: 'https://linkedin.com' },
+  { type: 'velog',    label: 'Velog',    url: 'https://velog.io' },
+]
 
 // ── Skills ───────────────────────────────
 export const skillGroups = [
@@ -61,10 +69,10 @@ export const skillGroups = [
     icon: 'T',
     variant: 'test',
     items: [
-      { name: 'Jest/Vitest',          level: 72 },
-      { name: 'Cypress',              level: 65 },
+      { name: 'Jest/Vitest',           level: 72 },
+      { name: 'Cypress',               level: 65 },
       { name: 'React Testing Library', level: 70 },
-      { name: 'Storybook',            level: 60 },
+      { name: 'Storybook',             level: 60 },
     ],
   },
 ]

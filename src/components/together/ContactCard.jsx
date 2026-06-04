@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './ContactCard.module.scss'
 
-const ICONS = {
+export const ICONS = {
   tel: (
     <svg viewBox="0 0 24 24">
       <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.4 11.4 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02L6.62 10.79z"/>
@@ -24,11 +24,23 @@ const ICONS = {
       <circle cx="12" cy="10" r="3"/>
     </svg>
   ),
+  linkedin: (
+    <svg viewBox="0 0 24 24">
+      <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+      <rect x="2" y="9" width="4" height="12"/>
+      <circle cx="4" cy="4" r="2"/>
+    </svg>
+  ),
+  velog: (
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M3 3h18a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1zm8.5 4.5l-4 9h2l.8-1.8h2.4l.8 1.8h2l-4-9zm0 3l.8 1.8h-1.6L11.5 10.5z"/>
+    </svg>
+  ),
 }
 
-const ContactCard = ({ type, label, value }) => {
-  return (
-    <div className={styles.card}>
+const ContactCard = ({ type, label, value, url }) => {
+  const inner = (
+    <>
       <div className={styles.icon} aria-hidden="true">
         {ICONS[type]}
       </div>
@@ -36,7 +48,15 @@ const ContactCard = ({ type, label, value }) => {
         <p className={styles.label}>{label}</p>
         <p className={styles.value}>{value}</p>
       </div>
-    </div>
+    </>
+  )
+
+  return url ? (
+    <a href={url} target="_blank" rel="noopener noreferrer" className={`${styles.card} ${styles.cardLink}`}>
+      {inner}
+    </a>
+  ) : (
+    <div className={styles.card}>{inner}</div>
   )
 }
 
