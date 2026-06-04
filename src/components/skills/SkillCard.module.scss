@@ -1,0 +1,89 @@
+@use '../../styles/variables' as *;
+
+.card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-sm;
+  padding: 2rem;
+  transition: border-color 0.25s, transform 0.25s, $transition-theme;
+
+  &:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .icon {
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-md;
+    font-weight: 900;
+    flex-shrink: 0;
+
+    &.fe {
+      background: var(--skill-icon-fe-bg);
+      color: var(--skill-icon-fe-color);
+    }
+    &.be {
+      background: var(--skill-icon-be-bg);
+      color: var(--skill-icon-be-color);
+    }
+    &.db {
+      background: var(--skill-icon-db-bg);
+      color: var(--skill-icon-db-color);
+    }
+    &.test {
+      background: var(--skill-icon-test-bg);
+      color: var(--skill-icon-test-color);
+    }
+  }
+
+  .title {
+    font-size: $font-size-md;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+
+    &:last-child { margin-bottom: 0; }
+
+    .name {
+      font-size: $font-size-xs;
+      color: var(--color-text-txt);
+    }
+
+    .barBg {
+      height: 4px;
+      background: var(--color-border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .barFill {
+      height: 100%;
+      border-radius: 2px;
+      width: 0;
+      transition: width 1s ease-out;
+
+      &.fe   { background: var(--skill-bar-fe); }
+      &.be   { background: var(--skill-bar-be); }
+      &.db   { background: var(--skill-bar-db); }
+      &.test { background: var(--skill-bar-test); }
+    }
+  }
+}

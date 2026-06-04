@@ -1,0 +1,31 @@
+@use '../styles/variables' as *;
+
+.projects {
+  padding: $space-12 0;
+
+  .header {
+    text-align: center;
+    margin-bottom: $space-10;
+    max-width: 56rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    .desc {
+      margin-top: $space-2;
+    }
+  }
+
+  .grid {
+    display: grid;
+    gap: $space-4;
+    grid-template-columns: 1fr;
+
+    @media (min-width: 700px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

@@ -1,56 +1,68 @@
 @use './variables' as *;
 
 .btn {
-    border-radius: $radius-md;
-    padding: .6rem 1.25rem;
-    font-size: 1.5rem;
-    cursor: pointer;
-    font-weight: 600;
+  border-radius: $radius-sm;
+  padding: 1rem 2rem;
+  font-size: $font-size-sm;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: none;
 
-    &__outline {
-        border: 1px solid var(--color-primary);
-        border-radius: $radius-sm;
-        background-color: transparent;
-        color: var(--color-text);
-    }
+  &__primary {
+    background: linear-gradient(90deg, rgba(33,132,207,1) 0%, rgba(91,185,222,1) 50%, rgba(101,240,223,1) 100%);
+    color: #0d0b18;
 
-    &__primary {
-        border: none;
-        background: #2184cf;
-        border-radius: $radius-sm;
-        background: linear-gradient(90deg,rgba(33, 132, 207, 1) 0%, rgba(91, 185, 222, 1) 50%, rgba(101, 240, 223, 1) 100%);
-        color: var(--color-text);
+    &:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
     }
+  }
 
-    &__small {
-        font-size: 1.2rem;
+  &__outline {
+    background-color: transparent;
+    border: 1px solid var(--color-primary);
+    color: var(--color-text);
+
+    &:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
     }
+  }
+
+  &__small {
+    font-size: $font-size-xs;
+    padding: 0.6rem 1.2rem;
+  }
 }
 
 .badge {
-    padding: .3rem .7rem;
-    font-size: 1.2rem;
-    display: inline-flex;
-    align-self: flex-start;
-    border-radius: $radius-full;
+  padding: 0.3rem 0.7rem;
+  font-size: $font-size-xs;
+  display: inline-flex;
+  align-self: flex-start;
+  border-radius: $radius-full;
 
-    &__green {
-        background-color: rgba(16, 185, 128, .15);
-        color: var(--color-success);
-    }
+  &__green {
+    background-color: rgba(16, 185, 128, 0.15);
+    color: var(--color-success);
+  }
 
-    &__primary {
-        background-color: rgba(124, 58, 237, .12);
-        color: var(--color-primary);
-    }
+  &__primary {
+    background-color: rgba(93, 232, 237, 0.1);
+    color: var(--color-primary);
+  }
 
-    &__blue {
-        background-color: rgba(59, 130, 246, .12);
-        color: var(--color-info);
-    }
+  &__blue {
+    background-color: rgba(59, 130, 246, 0.12);
+    color: var(--color-info);
+  }
 
-    &__orage {
-        background-color: rgba(245, 158, 11, .12);
-        color: var(--color-warning);
-    }
+  &__orange {
+    background-color: rgba(245, 158, 11, 0.12);
+    color: var(--color-warning);
+  }
 }

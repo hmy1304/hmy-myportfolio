@@ -1,0 +1,15 @@
+@use '../../styles/variables' as *;
+
+.footer {
+  padding: $space-4 0;
+  border-top: 1px solid var(--color-border);
+  margin-top: auto;
+  transition: border-color 0.2s;
+
+  .copy {
+    font-size: $font-size-xs;
+    color: var(--color-text-txt);
+    text-align: center;
+    margin: 0;
+  }
+}

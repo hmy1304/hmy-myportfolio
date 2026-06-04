@@ -1,0 +1,94 @@
+@use '../../styles/variables' as *;
+
+.card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-sm;
+  overflow: hidden;
+  transition: transform 0.25s, border-color 0.25s, $transition-theme;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba(93, 232, 237, 0.35);
+  }
+
+  .thumb {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.blue   { background: linear-gradient(135deg, #1a6fa0, #0d3a5f); }
+    &.cyan   { background: linear-gradient(135deg, #0d9ea8, #065a60); }
+    &.purple { background: linear-gradient(135deg, #6947b8, #3a2075); }
+
+    svg {
+      opacity: 0.35;
+    }
+  }
+
+  .meta {
+    padding: 2rem;
+  }
+
+  .tags {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+
+    .tagGroup {
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .tag {
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 0.3rem 1rem;
+      border-radius: $radius-full;
+
+      &.react  { background: #1a3a4a; color: #5bedf5; }
+      &.node   { background: #1a3a1a; color: #4ade80; }
+      &.done   {
+        background: rgba(93,232,237,0.08);
+        color: var(--color-primary);
+        border: 1px solid rgba(93,232,237,0.2);
+      }
+    }
+  }
+
+  .title {
+    font-size: $font-size-lg;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0 0 0.8rem;
+  }
+
+  .desc {
+    font-size: $font-size-xs;
+    color: var(--color-text-txt);
+    line-height: 1.7;
+    margin: 0 0 1.6rem;
+  }
+
+  .link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: $font-size-xs;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: rgba(93,232,237,0.08);
+    border: 1px solid rgba(93,232,237,0.2);
+    padding: 0.6rem 1.4rem;
+    border-radius: 8px;
+    transition: background 0.2s;
+    cursor: pointer;
+
+    &:hover { background: rgba(93,232,237,0.15); }
+
+    svg { flex-shrink: 0; }
+  }
+}

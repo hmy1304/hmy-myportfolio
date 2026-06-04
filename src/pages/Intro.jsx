@@ -1,8 +1,11 @@
 import React from 'react'
+import Hero from '../components/hero/Hero'
 
 const Intro = () => {
   return (
-    <div>Intro</div>
+    <div id="intro">
+      <Hero />
+    </div>
   )
 }
 

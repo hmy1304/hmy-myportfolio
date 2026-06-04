@@ -1,13 +1,17 @@
 import React from 'react'
-import Hero from '../components/hero/Hero'
-import Tools from "../components/tools/Tools"
+import Intro from './Intro'
+import Skills from './Skills'
+import Projects from './Projects'
+import Together from './Together'
 
 const Home = () => {
   return (
-    <div>
-      <Hero/>
-      <Tools/>
-    </div>
+    <>
+      <Intro />
+      <Skills />
+      <Projects />
+      <Together />
+    </>
   )
 }
 

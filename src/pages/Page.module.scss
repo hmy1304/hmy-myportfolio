@@ -1,26 +1,30 @@
+@use '../styles/variables' as *;
+
 .page {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 2rem 1.25rem 3rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: $space-10 $space-4 $space-12;
 }
 
 .title {
-    margin: 0 0 .5rem;
-    font-size: 1.75rem;
-    color: var(--color-text);
+  margin: 0 0 $space-2;
+  font-size: $font-size-3xl;
+  color: var(--color-text);
 }
 
 .lead {
-    margin-bottom: 1.5rem;
-    color: var(--color-text-muted);
-    line-height: 1.6;
+  margin-bottom: $space-4;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  font-size: $font-size-md;
 }
 
 .back {
-    color: var(--color-primary);
-    font-weight: 600;
-    font-size: .9rem;
-    &:hover {
-        text-decoration: underline;
-    }
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: $font-size-sm;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

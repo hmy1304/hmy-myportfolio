@@ -1,0 +1,36 @@
+@use '../styles/variables' as *;
+
+.skills {
+  padding: $space-12 0;
+
+  .layout {
+    display: grid;
+    gap: $space-10;
+    align-items: start;
+
+    @media (min-width: 900px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .cardsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-3;
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .stickyRight {
+    @media (min-width: 900px) {
+      position: sticky;
+      top: 10rem;
+    }
+
+    .desc {
+      margin-top: $space-3;
+    }
+  }
+}

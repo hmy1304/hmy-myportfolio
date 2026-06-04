@@ -1,0 +1,62 @@
+@use '../../styles/variables' as *;
+
+.card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-sm;
+  padding: 2rem 2.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  transition: border-color 0.25s, transform 0.25s, $transition-theme;
+
+  &:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  .icon {
+    width: 4.4rem;
+    height: 4.4rem;
+    flex-shrink: 0;
+    background: rgba(93, 232, 237, 0.1);
+    border: 1px solid rgba(93, 232, 237, 0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--color-primary);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+
+  .info {
+    min-width: 0;
+
+    .label {
+      font-size: $font-size-xs;
+      font-weight: 700;
+      color: var(--color-text-txt);
+      letter-spacing: 0.06em;
+      text-transform: lowercase;
+      margin: 0 0 0.3rem;
+    }
+
+    .value {
+      font-size: $font-size-sm;
+      font-weight: 500;
+      color: var(--color-text);
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
