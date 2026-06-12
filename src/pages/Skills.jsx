@@ -23,7 +23,7 @@ const Skills = () => {
           </div>
 
           {/* ── 설명 텍스트 (우측) ── */}
-          <div className={styles.stickyRight}>
+          <div className={styles.right}>
             <p className="section-label">what i do</p>
             <h2 className="section-title">
               SKILLS &amp;<br />

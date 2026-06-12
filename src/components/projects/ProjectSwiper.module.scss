@@ -1,0 +1,133 @@
+@use '../../styles/variables' as *;
+
+.wrap {
+  position: relative;
+}
+
+// ── Swiper 슬라이더 ───────────────────────
+.swiper {
+  // 좌우 약간 넘쳐 보이게 (peek 효과)
+  overflow: visible !important;
+  padding-bottom: 1.2rem !important;  // pagination dot 공간
+
+  // 화면 밖 카드 희미하게
+  :global(.swiper-slide) {
+    opacity: 0.45;
+    transform: scale(0.97);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  :global(.swiper-slide-active),
+  :global(.swiper-slide-visible) {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.slide {
+  height: auto;          // 카드 높이 자동
+  display: flex;
+
+  // ProjectCard가 꽉 채우도록
+  > * { width: 100%; }
+}
+
+// ── 슬라이드 카운터 ───────────────────────
+.counter {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: $space-3;
+  font-family: $font-display;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.current {
+  font-size: 3.6rem;
+  color: var(--color-primary);
+}
+
+.sep {
+  font-size: 2rem;
+  color: var(--color-text-txt);
+}
+
+.total {
+  font-size: 2rem;
+  color: var(--color-text-txt);
+}
+
+// ── 하단 컨트롤 바 ────────────────────────
+.controls {
+  margin-top: $space-4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+}
+
+// Swiper 기본 pagination dot 재정의
+.pagination {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  // swiper가 주입하는 dot
+  :global(.swiper-pagination-bullet) {
+    width: 2.8rem;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--color-border);
+    opacity: 1;
+    transition: background 0.2s, width 0.2s;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    background: var(--color-primary);
+    width: 4.8rem;
+  }
+}
+
+// ── 화살표 버튼 ───────────────────────────
+.navBtns {
+  display: flex;
+  gap: 0.8rem;
+  flex-shrink: 0;
+}
+
+.navBtn {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-card-bg);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s, transform 0.15s;
+
+  svg {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background: rgba(93, 232, 237, 0.08);
+    transform: scale(1.08);
+  }
+
+  &:disabled,
+  &:global(.swiper-button-disabled) {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+  }
+}

@@ -2,6 +2,8 @@
 
 .projects {
   padding: $space-12 0;
+  // Swiper peek(overflow:visible) 가 inner 밖으로 안 나가도록
+  overflow: hidden;
 
   .header {
     text-align: center;
@@ -15,6 +17,7 @@
     }
   }
 
+  // ── 3개 이하: 그리드 ────────────────────
   .grid {
     display: grid;
     gap: $space-4;

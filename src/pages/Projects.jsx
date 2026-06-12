@@ -1,9 +1,15 @@
 import React from 'react'
 import ProjectCard from '../components/projects/ProjectCard'
+import ProjectSwiper from '../components/projects/ProjectSwiper'
 import { projects } from '../data'
 import styles from './Projects.module.scss'
 
+// 이 숫자 이하면 일반 그리드, 초과하면 Swiper 캐러셀
+const GRID_LIMIT = 3
+
 const Projects = () => {
+  const useSwiper = projects.length > GRID_LIMIT
+
   return (
     <section id="projects" className={styles.projects}>
       <div className="inner">
@@ -18,11 +24,17 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className={styles.grid}>
-          {projects.map((project) => (
-            <ProjectCard key={project.id} {...project} />
-          ))}
-        </div>
+        {useSwiper ? (
+          /* ── 4개 이상: Swiper 캐러셀 ── */
+          <ProjectSwiper projects={projects} />
+        ) : (
+          /* ── 3개 이하: 기존 그리드 ── */
+          <div className={styles.grid}>
+            {projects.map((project) => (
+              <ProjectCard key={project.id} {...project} />
+            ))}
+          </div>
+        )}
 
       </div>
     </section>

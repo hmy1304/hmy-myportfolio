@@ -15,10 +15,9 @@ export const contact = {
   email: 'hmy@gmail.com',
   github: 'github.com',
   location: '경기도 남양주시',
-  resumeUrl: '/resume.pdf',   // ← 실제 이력서 파일 경로로 교체
+  resumeUrl: '/resume.pdf',
 }
 
-// SNS / 외부 링크
 export const snsLinks = [
   { type: 'github',   label: 'GitHub',   url: 'https://github.com' },
   { type: 'linkedin', label: 'LinkedIn', url: 'https://linkedin.com' },
@@ -78,6 +77,7 @@ export const skillGroups = [
 ]
 
 // ── Projects ─────────────────────────────
+// 3개 이하 → 그리드 / 4개 이상 → Swiper 캐러셀 자동 전환
 export const projects = [
   {
     id: 'todo',
@@ -105,5 +105,23 @@ export const projects = [
     desc: 'firebase의 json파일과 kakao developers를 이용하여, kakao developers로는 지도 데이터를 가져오고 json파일로는 필지의 조회 실패로 확인이 가능한 정보를 불러와서 지도표시하였으며 구현하였습니다.',
     codeUrl: '#',
     thumbVariant: 'purple',
+  },
+  {
+    id: 'weather',
+    title: '날씨 대시보드',
+    tags: ['React', 'Node.js'],
+    status: '완료',
+    desc: 'OpenWeather API를 활용하여 현재 위치 기반 날씨 정보와 5일 예보를 시각화한 대시보드입니다. Chart.js로 기온 변화 그래프를 구현하고, 도시 검색 기능을 추가하였습니다.',
+    codeUrl: '#',
+    thumbVariant: 'blue',
+  },
+  {
+    id: 'shop',
+    title: '쇼핑몰 플랫폼',
+    tags: ['React', 'Node.js'],
+    status: '완료',
+    desc: 'React와 Node.js로 구축한 풀스택 쇼핑몰입니다. 상품 필터링, 장바구니, 결제 플로우를 구현하고 JWT 기반 인증과 관리자 대시보드를 포함합니다.',
+    codeUrl: '#',
+    thumbVariant: 'cyan',
   },
 ]
