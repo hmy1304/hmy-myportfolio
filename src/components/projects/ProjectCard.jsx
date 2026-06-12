@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './ProjectCard.module.scss'
 
-// 썸네일 SVG 아이콘들
+// 이미지가 없을 때 표시하는 fallback SVG
 const ThumbIcon = ({ variant }) => {
   if (variant === 'blue') return (
     <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
@@ -36,11 +36,15 @@ const TAG_MAP = {
   'Node.js': 'node',
 }
 
-const ProjectCard = ({ title, tags, status, desc, codeUrl, thumbVariant }) => {
+const ProjectCard = ({ title, tags, status, desc, codeUrl, thumbImage, thumbVariant }) => {
   return (
     <article className={styles.card}>
-      <div className={`${styles.thumb} ${styles[thumbVariant]}`}>
-        <ThumbIcon variant={thumbVariant} />
+      {/* thumbImage가 있으면 실제 이미지, 없으면 SVG fallback */}
+      <div className={`${styles.thumb} ${!thumbImage ? styles[thumbVariant] : ''}`}>
+        {thumbImage
+          ? <img src={thumbImage} alt={`${title} 썸네일`} className={styles.thumbImg} />
+          : <ThumbIcon variant={thumbVariant} />
+        }
       </div>
 
       <div className={styles.meta}>

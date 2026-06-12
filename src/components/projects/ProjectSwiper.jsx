@@ -40,15 +40,17 @@ const ProjectSwiper = ({ projects }) => {
         modules={[Navigation, Pagination, Keyboard, A11y]}
         onSwiper={setSwiperInstance}
         onSlideChange={(s) => setActiveIndex(s.realIndex)}
-        slidesPerView={1}
+        slidesPerView={3}
         spaceBetween={24}
         centeredSlides={false}
+        loop={true}
         keyboard={{ enabled: true }}
         pagination={{ clickable: true, el: `.${styles.pagination}` }}
         navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
         breakpoints={{
+          0:   { slidesPerView: 1, spaceBetween: 24 },
           640: { slidesPerView: 2, spaceBetween: 24 },
-          1024: { slidesPerView: 3, spaceBetween: 24 },
+          900: { slidesPerView: 3, spaceBetween: 24 },
         }}
         className={styles.swiper}
         a11y={{ prevSlideMessage: '이전 프로젝트', nextSlideMessage: '다음 프로젝트' }}

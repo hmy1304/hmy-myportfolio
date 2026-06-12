@@ -2,6 +2,7 @@
 
 .wrap {
   position: relative;
+  width: 100%;
 }
 
 // ── Swiper 슬라이더 ───────────────────────
@@ -117,17 +118,10 @@
     height: 1.8rem;
   }
 
-  &:hover:not(:disabled) {
+  &:hover {
     border-color: var(--color-primary);
     color: var(--color-primary);
     background: rgba(93, 232, 237, 0.08);
     transform: scale(1.08);
-  }
-
-  &:disabled,
-  &:global(.swiper-button-disabled) {
-    opacity: 0.3;
-    cursor: not-allowed;
-    transform: none;
   }
 }

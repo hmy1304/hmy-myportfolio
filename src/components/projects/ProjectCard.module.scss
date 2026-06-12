@@ -28,6 +28,13 @@
     }
   }
 
+  .thumbImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      // 비율 유지하며 꽉 채움
+    display: block;
+  }
+
   .meta {
     padding: 2rem;
   }
