@@ -5,17 +5,23 @@
   width: 100%;
 }
 
-// ── Swiper 슬라이더 ───────────────────────
-.swiper {
-  // 좌우 약간 넘쳐 보이게 (peek 효과)
-  overflow: visible !important;
-  padding-bottom: 1.2rem !important;  // pagination dot 공간
+// loop 복제 슬라이드를 바깥에서 잘라냄
+.clipWrap {
+  overflow: hidden;
+  width: 100%;
+}
 
-  // 화면 밖 카드 희미하게
+// ── Swiper ───────────────────────────────
+.swiper {
+  width: 100%;
+  // 가시 범위 밖 슬라이드 희미하게 (overflow hidden 안에서만 적용)
   :global(.swiper-slide) {
-    opacity: 0.45;
+    opacity: 0.5;
     transform: scale(0.97);
-    transition: opacity 0.35s ease, transform 0.35s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    // ★ 카드 높이 균일 고정
+    height: auto;
+    align-self: stretch;
   }
 
   :global(.swiper-slide-active),
@@ -23,14 +29,23 @@
     opacity: 1;
     transform: scale(1);
   }
+
+  :global(.swiper-wrapper) {
+    align-items: stretch; // 모든 슬라이드 같은 높이로 늘림
+  }
 }
 
+// ── 슬라이드 ─────────────────────────────
 .slide {
-  height: auto;          // 카드 높이 자동
+  // flex로 내부 카드가 부모 높이를 꽉 채우게
   display: flex;
+  height: auto !important; // Swiper 인라인 스타일 override
 
-  // ProjectCard가 꽉 채우도록
-  > * { width: 100%; }
+  > * {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 // ── 슬라이드 카운터 ───────────────────────
@@ -68,14 +83,12 @@
   gap: $space-3;
 }
 
-// Swiper 기본 pagination dot 재정의
 .pagination {
   flex: 1;
   display: flex;
   align-items: center;
   gap: 0.6rem;
 
-  // swiper가 주입하는 dot
   :global(.swiper-pagination-bullet) {
     width: 2.8rem;
     height: 3px;
