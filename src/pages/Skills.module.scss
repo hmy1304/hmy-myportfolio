@@ -3,30 +3,40 @@
 .skills {
   padding: $space-12 0;
 
-  .layout {
-    display: grid;
-    gap: $space-10;
-    align-items: start;         // stretch → start: 높이 강제 맞춤 제거
+  // ── 타이틀 (가운데 정렬) ─────────────────
+  .header {
+    text-align: center;
+    margin-bottom: $space-10;
 
-    @media (min-width: 900px) {
-      grid-template-columns: 1fr 1fr;
+    // section-label, section-title 은 global 클래스이므로
+    // 가운데 정렬만 여기서 보강
+    :global(.section-label) {
+      display: block;
+      text-align: center;
+    }
+
+    :global(.section-title) {
+      text-align: center;
     }
   }
 
+  .desc {
+    max-width: 52rem;
+    margin: $space-3 auto 0;
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  // ── 스킬 카드 그리드 (가운데 정렬) ──────
   .cardsGrid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: $space-3;
+    max-width: 96rem;
+    margin: 0 auto;
 
-    @media (max-width: 600px) {
+    @media (max-width: 760px) {
       grid-template-columns: 1fr;
-    }
-  }
-
-  // sticky 완전 제거 — 그냥 일반 블록으로
-  .right {
-    .desc {
-      margin-top: $space-3;
     }
   }
 }
