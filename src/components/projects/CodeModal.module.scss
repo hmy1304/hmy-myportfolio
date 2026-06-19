@@ -1,0 +1,296 @@
+@use '../../styles/variables' as *;
+
+// ── 오버레이 ──────────────────────────────
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to   { opacity: 1 }
+}
+
+// ── 모달 본체 ─────────────────────────────
+.modal {
+  width: 100%;
+  max-width: 86rem;
+  max-height: 90vh;
+  background: #0f1117;
+  border: 1px solid rgba(93, 232, 237, 0.15);
+  border-radius: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.6);
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(2rem); opacity: 0 }
+  to   { transform: translateY(0);    opacity: 1 }
+}
+
+// ── 헤더 ─────────────────────────────────
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.6rem;
+  background: #161820;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+// 맥OS 스타일 dots
+.dots {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.dot {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  &:hover { opacity: 0.75; }
+
+  &.red    { background: #ff5f56; }
+  &.yellow { background: #ffbd2e; cursor: default; }
+  &.green  { background: #27c93f; cursor: default; }
+}
+
+.titleWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: rgba(255,255,255,0.5);
+  font-size: 1.3rem;
+}
+
+.modalTitle {
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+}
+
+// 버튼들
+.githubBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.5rem 1.1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+
+  &:hover {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+  }
+}
+
+.copyBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.5rem 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+
+  &:hover {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+  }
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+
+  &:hover {
+    background: rgba(255,60,60,0.15);
+    color: #ff5f56;
+  }
+}
+
+// ── 파일 탭 ───────────────────────────────
+.tabs {
+  display: flex;
+  gap: 0;
+  background: #111318;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  overflow-x: auto;
+  flex-shrink: 0;
+
+  &::-webkit-scrollbar { height: 3px; }
+  &::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); }
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.8rem;
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.4);
+  background: transparent;
+  border: none;
+  border-right: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, background 0.15s;
+
+  &:hover {
+    color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.04);
+  }
+}
+
+.activeTab {
+  color: #5DE8ED !important;
+  background: rgba(93,232,237,0.06) !important;
+  border-bottom-color: #5DE8ED;
+}
+
+.tabIcon {
+  font-size: 1.3rem;
+}
+
+// ── 코드 영역 ─────────────────────────────
+.body {
+  flex: 1;
+  overflow: auto;
+  background: #0d0f14;
+
+  &::-webkit-scrollbar { width: 8px; height: 8px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    &:hover { background: rgba(255,255,255,0.2); }
+  }
+}
+
+.pre {
+  margin: 0;
+  padding: 1.6rem 0;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  font-size: 1.35rem;
+  line-height: 1.8;
+  min-height: 100%;
+}
+
+.code {
+  display: block;
+}
+
+.codeLine {
+  display: flex;
+  align-items: flex-start;
+  padding: 0 1.6rem;
+
+  &:hover {
+    background: rgba(255,255,255,0.03);
+  }
+}
+
+.lineNum {
+  min-width: 4rem;
+  margin-right: 1.6rem;
+  color: rgba(255,255,255,0.2);
+  text-align: right;
+  user-select: none;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.lineContent {
+  color: #d1d5db;
+  white-space: pre;
+  word-break: keep-all;
+}
+
+// 코드 없음
+.noCode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  min-height: 28rem;
+  color: rgba(255,255,255,0.25);
+
+  p {
+    font-size: 1.4rem;
+    margin: 0;
+  }
+}
+
+.externalLink {
+  font-size: 1.3rem;
+  color: #5DE8ED;
+  text-decoration: none;
+  border: 1px solid rgba(93,232,237,0.3);
+  padding: 0.7rem 1.6rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+  &:hover { background: rgba(93,232,237,0.08); }
+}
+
+.noCodeText {
+  color: rgba(255,255,255,0.25);
+}
+
+// ── 하단 상태바 ───────────────────────────
+.statusBar {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.6rem 1.6rem;
+  background: #161820;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.3);
+  flex-shrink: 0;
+}

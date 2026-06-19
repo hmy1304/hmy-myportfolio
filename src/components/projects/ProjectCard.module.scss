@@ -6,7 +6,6 @@
   border-radius: $radius-sm;
   overflow: hidden;
   transition: transform 0.25s, border-color 0.25s, $transition-theme;
-  // ★ 높이 균일화: 카드를 flex column으로 만들어 부모 높이를 꽉 채움
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -16,6 +15,7 @@
     border-color: rgba(93, 232, 237, 0.35);
   }
 
+  // ── 썸네일 ─────────────────────────────
   .thumb {
     width: 100%;
     aspect-ratio: 16 / 9;
@@ -27,52 +27,76 @@
     &.cyan   { background: linear-gradient(135deg, #0d9ea8, #065a60); }
     &.purple { background: linear-gradient(135deg, #6947b8, #3a2075); }
 
-    svg {
-      opacity: 0.35;
-    }
+    svg { opacity: 0.35; }
   }
 
   .thumbImg {
     width: 100%;
     height: 100%;
-    object-fit: cover;      // 비율 유지하며 꽉 채움
+    object-fit: cover;
     display: block;
   }
 
+  // ── 메타 영역 ───────────────────────────
   .meta {
-    padding: 2rem;
+    padding: 1.8rem 2rem;
     display: flex;
     flex-direction: column;
-    flex: 1;          // 썸네일 제외한 나머지 공간을 모두 차지
+    flex: 1;
   }
 
-  .tags {
+  // ── 태그 행 ─────────────────────────────
+  .tagsRow {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
+    gap: 0.8rem;
     margin-bottom: 1.2rem;
-
-    .tagGroup {
-      display: flex;
-      gap: 0.6rem;
-    }
-
-    .tag {
-      font-size: 1.1rem;
-      font-weight: 700;
-      padding: 0.3rem 1rem;
-      border-radius: $radius-full;
-
-      &.react  { background: #1a3a4a; color: #5bedf5; }
-      &.node   { background: #1a3a1a; color: #4ade80; }
-      &.done   {
-        background: rgba(93,232,237,0.08);
-        color: var(--color-primary);
-        border: 1px solid rgba(93,232,237,0.2);
-      }
-    }
+    flex-wrap: wrap;
   }
 
+  .tagGroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    flex: 1;
+  }
+
+  // 각 태그 — inline-style로 색상 주입, 공통 구조만 여기서
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 0.3rem 0.9rem;
+    border-radius: $radius-full;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+    transition: opacity 0.15s;
+
+    &:hover { opacity: 0.85; }
+  }
+
+  .tagIcon {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  // 상태 뱃지 (완료 / 진행중 등)
+  .status {
+    flex-shrink: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 0.3rem 1rem;
+    border-radius: $radius-full;
+    background: rgba(93, 232, 237, 0.08);
+    color: var(--color-primary);
+    border: 1px solid rgba(93, 232, 237, 0.2);
+    white-space: nowrap;
+  }
+
+  // ── 제목 ────────────────────────────────
   .title {
     font-size: $font-size-lg;
     font-weight: 700;
@@ -80,14 +104,35 @@
     margin: 0 0 0.8rem;
   }
 
+  // ── 설명 ────────────────────────────────
   .desc {
     font-size: $font-size-xs;
     color: var(--color-text-txt);
     line-height: 1.7;
-    margin: 0 0 1.6rem;
-    flex: 1;          // 남은 공간 채워서 버튼을 항상 하단으로 밀어냄
+    margin: 0 0 1.4rem;
+    flex: 1;
+    word-break: keep-all;
   }
 
+  .expandBtn {
+    display: inline;
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    font-size: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 0.2rem;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    opacity: 0.85;
+    transition: opacity 0.15s;
+
+    &:hover { opacity: 1; }
+  }
+
+  // ── 코드보기 버튼 ────────────────────────
   .link {
     display: inline-flex;
     align-items: center;
@@ -95,14 +140,19 @@
     font-size: $font-size-xs;
     font-weight: 700;
     color: var(--color-primary);
-    background: rgba(93,232,237,0.08);
-    border: 1px solid rgba(93,232,237,0.2);
+    background: rgba(93, 232, 237, 0.08);
+    border: 1px solid rgba(93, 232, 237, 0.2);
     padding: 0.6rem 1.4rem;
     border-radius: 8px;
-    transition: background 0.2s;
     cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    width: 100%;
+    justify-content: center;
 
-    &:hover { background: rgba(93,232,237,0.15); }
+    &:hover {
+      background: rgba(93, 232, 237, 0.15);
+      transform: translateY(-1px);
+    }
 
     svg { flex-shrink: 0; }
   }

@@ -98,8 +98,90 @@ export const projects = [
     status: '완료',
     desc: 'Vite와 React를 사용하여 만든 간단한 모두가 알만한 끝말잇기입니다. 제시되어 있는 단어의 끝 단어에 맞춰서 그 단어부터 시작하는 단어를 입력 시 정답 여부를 판단하고 정답일 시 현재 입력한 단어의 끝 단어부터 다시 새 입력을 받게 되어있습니다. ',
     codeUrl: '#',
-    thumbImage: '/images/wordgame.png',            // ← 여기에 이미지 경로 입력 (비우면 SVG fallback)
-    thumbVariant: 'blue',      // thumbImage 없을 때만 사용
+    thumbImage: '/images/wordgame.png',
+    thumbVariant: 'blue',
+    // ★ codeFiles: 코드 뷰어에 표시할 파일 목록
+    // name: 탭에 표시될 파일명, language: 언어 표시, code: 실제 코드 문자열
+    codeFiles: [
+      {
+        name: 'App.jsx',
+        language: 'JSX',
+        code: `import React, { useState } from 'react'
+
+const App = () => {
+  const [word, setWord] = useState('한국어')
+  const [input, setInput] = useState('')
+  const [result, setResult] = useState('')
+
+  const handleSubmit = () => {
+    const lastChar = word[word.length - 1]
+    if (input[0] === lastChar) {
+      setWord(input)
+      setResult('✅ 정답!')
+      setInput('')
+    } else {
+      setResult(\`❌ "\${lastChar}"(으)로 시작하는 단어를 입력하세요.\`)
+    }
+  }
+
+  return (
+    <div className="app">
+      <h1>끝말잇기</h1>
+      <p>현재 단어: <strong>{word}</strong></p>
+      <input
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="단어 입력..."
+        onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
+      />
+      <button onClick={handleSubmit}>확인</button>
+      {result && <p>{result}</p>}
+    </div>
+  )
+}
+
+export default App`,
+      },
+      {
+        name: 'App.jsx',
+        language: 'JSX',
+        code: `import React, { useState } from 'react'
+
+const App = () => {
+  const [word, setWord] = useState('한국어')
+  const [input, setInput] = useState('')
+  const [result, setResult] = useState('')
+
+  const handleSubmit = () => {
+    const lastChar = word[word.length - 1]
+    if (input[0] === lastChar) {
+      setWord(input)
+      setResult('✅ 정답!')
+      setInput('')
+    } else {
+      setResult(\`❌ "\${lastChar}"(으)로 시작하는 단어를 입력하세요.\`)
+    }
+  }
+
+  return (
+    <div className="app">
+      <h1>끝말잇기</h1>
+      <p>현재 단어: <strong>{word}</strong></p>
+      <input
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="단어 입력..."
+        onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
+      />
+      <button onClick={handleSubmit}>확인</button>
+      {result && <p>{result}</p>}
+    </div>
+  )
+}
+
+export default App`,
+      },
+    ],
   },
   {
     id: 'timer',
@@ -110,6 +192,8 @@ export const projects = [
     codeUrl: '#',
     thumbImage: '/images/timer.png',
     thumbVariant: 'cyan',
+    // codeFiles: [] 에 코드를 추가하세요 (예시는 '끝말잇기' 프로젝트 참조)
+    codeFiles: [],
   },
   {
     id: 'router',
@@ -120,6 +204,8 @@ export const projects = [
     codeUrl: '#',
     thumbImage: '/images/routerproject.png',
     thumbVariant: 'purple',
+    // codeFiles: [] 에 코드를 추가하세요 (예시는 '끝말잇기' 프로젝트 참조)
+    codeFiles: [],
   },
   {
     id: 'weatherapp',
@@ -130,6 +216,8 @@ export const projects = [
     codeUrl: '#',
     thumbImage: '/images/weatherapp.png',
     thumbVariant: 'blue',
+    // codeFiles: [] 에 코드를 추가하세요 (예시는 '끝말잇기' 프로젝트 참조)
+    codeFiles: [],
   },
   {
     id: 'todolist-ver2',
@@ -140,6 +228,8 @@ export const projects = [
     codeUrl: '#',
     thumbImage: '/images/todolist.png',
     thumbVariant: 'cyan',
+    // codeFiles: [] 에 코드를 추가하세요 (예시는 '끝말잇기' 프로젝트 참조)
+    codeFiles: [],
   },
   {
     id: 'emotion',
@@ -150,6 +240,8 @@ export const projects = [
     codeUrl: '#',
     thumbImage: '/images/emotion.png',
     thumbVariant: 'cyan',
+    // codeFiles: [] 에 코드를 추가하세요 (예시는 '끝말잇기' 프로젝트 참조)
+    codeFiles: [],
   },
   {
     id: 'toilet-spot',
@@ -160,6 +252,8 @@ export const projects = [
     codeUrl: '#',
     thumbImage: '/images/toilet-spot.png',
     thumbVariant: 'cyan',
+    // codeFiles: [] 에 코드를 추가하세요 (예시는 '끝말잇기' 프로젝트 참조)
+    codeFiles: [],
   },
   {
     id: 'tocobo',
@@ -170,5 +264,7 @@ export const projects = [
     codeUrl: '#',
     thumbImage: '/images/tocobo.png',
     thumbVariant: 'cyan',
+    // codeFiles: [] 에 코드를 추가하세요 (예시는 '끝말잇기' 프로젝트 참조)
+    codeFiles: [],
   },
 ]
