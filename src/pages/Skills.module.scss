@@ -30,13 +30,16 @@
   // ── 스킬 카드 그리드 (가운데 정렬) ──────
   .cardsGrid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);  // 큰 화면: 1줄 4열
     gap: $space-3;
-    max-width: 96rem;
     margin: 0 auto;
 
-    @media (max-width: 760px) {
-      grid-template-columns: 1fr;
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr); // 중간 화면: 2줄 2열
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;            // 모바일: 1열
     }
   }
 }
