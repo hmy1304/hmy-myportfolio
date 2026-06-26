@@ -1,6 +1,5 @@
 import React from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Float } from '@react-three/drei'
 import Box from '../animation/Box'
 import styles from './Hero.module.scss'
 import { profile } from '../../data'
@@ -58,13 +57,10 @@ const Hero = () => {
         <div className={styles.canvasWrap}>
           <Canvas
             className={styles.canvas}
-            camera={{ position: [0, 0, 4], fov: 65 }}
+            camera={{ position: [0, 0, 6], fov: 55 }}
+            gl={{ antialias: true, alpha: true }}
           >
-            <ambientLight intensity={0.7} />
-            <pointLight position={[10, 10, 10]} intensity={1.5} />
-            <Float speed={2} rotationIntensity={0.4} floatIntensity={0.6}>
-              <Box position={[0, 0, 0]} scale={0.5} />
-            </Float>
+            <Box />
           </Canvas>
         </div>
 

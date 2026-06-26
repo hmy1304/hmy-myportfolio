@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────
-//  모든 포트폴리오 데이터를 한 곳에서 관리
+//  포트폴리오 데이터 통합 관리
 // ─────────────────────────────────────────
 
 export const profile = {
@@ -25,7 +25,6 @@ export const snsLinks = [
   { type: "velog", label: "Velog", url: "https://velog.io" },
 ];
 
-// ── Skills ───────────────────────────────
 export const skillGroups = [
   {
     id: "frontend",
@@ -77,112 +76,24 @@ export const skillGroups = [
   },
 ];
 
-// ── Projects ─────────────────────────────
-// 3개 이하 → 그리드 / 4개 이상 → Swiper 캐러셀 자동 전환
+// ── Projects ──────────────────────────────────────────────────────────────────
 //
-// ★ 이미지 삽입 방법 2가지:
+//  deployUrl : 카드 전체를 클릭했을 때 이동하는 Vercel 배포 URL
+//  codeUrl   : 하단 [GitHub] 버튼을 클릭했을 때 이동하는 GitHub 저장소 URL
 //
-// [방법 1] public 폴더 — 경로를 문자열로 직접 지정
-//   thumbImage: '/images/todo.png'
-//   → 파일을 public/images/ 에 넣으면 바로 사용 가능
-//
-// [방법 2] src/assets 폴더 — import 후 변수로 전달 (Vite 번들 최적화 적용)
-//   import todoImg from '../assets/images/todo.png'  ← 파일 상단에 추가
-//   thumbImage: todoImg
-//
-// thumbImage를 비워두거나 필드 자체를 삭제하면 thumbVariant의 SVG가 대신 표시됨
+//  두 필드 모두 '#' 또는 빈 값으로 두면 해당 기능이 비활성화됩니다.
+// ─────────────────────────────────────────────────────────────────────────────
 export const projects = [
   {
     id: "word",
     title: "끝말잇기",
     tags: ["React", "JavaScript", "Scss"],
     status: "완료",
-    desc: "Vite와 React를 사용하여 만든 간단한 모두가 알만한 끝말잇기입니다. 제시되어 있는 단어의 끝 단어에 맞춰서 그 단어부터 시작하는 단어를 입력 시 정답 여부를 판단하고 정답일 시 현재 입력한 단어의 끝 단어부터 다시 새 입력을 받게 되어있습니다. ",
-    codeUrl: "https://github.com/hmy1304/react-basic",
+    desc: "Vite와 React를 사용하여 만든 간단한 모두가 알만한 끝말잇기입니다. 제시되어 있는 단어의 끝 단어에 맞춰서 그 단어부터 시작하는 단어를 입력 시 정답 여부를 판단하고 정답일 시 현재 입력한 단어의 끝 단어부터 다시 새 입력을 받게 되어있습니다.",
+    deployUrl: "https://react-basic-mu-lime.vercel.app/", // ← Vercel 배포 주소 입력 (예: 'https://word-game.vercel.app')
+    codeUrl: "https://github.com/hmy1304/react-basic", // ← GitHub 저장소 주소 입력 (예: 'https://github.com/hmy/word-game')
     thumbImage: "/images/wordgame.png",
     thumbVariant: "blue",
-    // ★ codeFiles: 코드 뷰어에 표시할 파일 목록
-    // name: 탭에 표시될 파일명, language: 언어 표시, code: 실제 코드 문자열
-    codeFiles: [
-      {
-        name: "App.jsx",
-        language: "JSX",
-        code: `import React, { useState } from 'react'
-
-const App = () => {
-  const [word, setWord] = useState('한국어')
-  const [input, setInput] = useState('')
-  const [result, setResult] = useState('')
-
-  const handleSubmit = () => {
-    const lastChar = word[word.length - 1]
-    if (input[0] === lastChar) {
-      setWord(input)
-      setResult('✅ 정답!')
-      setInput('')
-    } else {
-      setResult(\`❌ "\${lastChar}"(으)로 시작하는 단어를 입력하세요.\`)
-    }
-  }
-
-  return (
-    <div className="app">
-      <h1>끝말잇기</h1>
-      <p>현재 단어: <strong>{word}</strong></p>
-      <input
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="단어 입력..."
-        onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
-      />
-      <button onClick={handleSubmit}>확인</button>
-      {result && <p>{result}</p>}
-    </div>
-  )
-}
-
-export default App`,
-      },
-      {
-        name: "App.jsx",
-        language: "JSX",
-        code: `import React, { useState } from 'react'
-
-const App = () => {
-  const [word, setWord] = useState('한국어')
-  const [input, setInput] = useState('')
-  const [result, setResult] = useState('')
-
-  const handleSubmit = () => {
-    const lastChar = word[word.length - 1]
-    if (input[0] === lastChar) {
-      setWord(input)
-      setResult('✅ 정답!')
-      setInput('')
-    } else {
-      setResult(\`❌ "\${lastChar}"(으)로 시작하는 단어를 입력하세요.\`)
-    }
-  }
-
-  return (
-    <div className="app">
-      <h1>끝말잇기</h1>
-      <p>현재 단어: <strong>{word}</strong></p>
-      <input
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="단어 입력..."
-        onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
-      />
-      <button onClick={handleSubmit}>확인</button>
-      {result && <p>{result}</p>}
-    </div>
-  )
-}
-
-export default App`,
-      },
-    ],
   },
   {
     id: "timer",
@@ -190,47 +101,43 @@ export default App`,
     tags: ["React", "Vite", "JavaScript"],
     status: "완료",
     desc: "Vite와 React를 사용하여 간단한 타이머앱을 구현하였습니다. useState와 useRef를 활용하여 타이머의 시작과 진행 도중에 중단, 그리고 초기화 기능까지 구현하였습니다.",
+    deployUrl: "https://timer-ten-gamma-67.vercel.app/",
     codeUrl: "https://github.com/hmy1304/timer",
     thumbImage: "/images/timer.png",
     thumbVariant: "cyan",
-    // codeFiles: [] 에 코드를 추가하세요 (예시는 '끝말잇기' 프로젝트 참조)
-    codeFiles: [],
   },
   {
     id: "router",
     title: "라우터 프로젝트",
     tags: ["Vite", "React", "Swiper", "JavaScript", "Router"],
     status: "완료",
-    desc: "헤더, 메인화면, 푸터로 나눠서 구현했으며, 헤더에는 각각의 화면으로 이동할 수 있는 navigation을 넣어놨으며, swiper를 이용하여 옆으로 화면을 넘길 수 있는 슬라이드 게시판, 여러 게시글들을 볼 수 있는 게시판, 푸터에는 각각의 커뮤니티로 이어지는 링크를 달았습니다.전체적으로 React Router를 사용하여 라우팅, 동적인 경로, 한 jsx파일에 전부 구현하는 것이 아닌 적적한 데이터 구조, 컴포넌트 분리를 하고, css 스타일링을 연습한 프로젝트입니다.",
+    desc: "헤더, 메인화면, 푸터로 나눠서 구현했으며, 헤더에는 각각의 화면으로 이동할 수 있는 navigation을 넣어놨으며, swiper를 이용하여 옆으로 화면을 넘길 수 있는 슬라이드 게시판, 여러 게시글들을 볼 수 있는 게시판, 푸터에는 각각의 커뮤니티로 이어지는 링크를 달았습니다. 전체적으로 React Router를 사용하여 라우팅, 동적인 경로, 한 jsx파일에 전부 구현하는 것이 아닌 적절한 데이터 구조, 컴포넌트 분리를 하고, css 스타일링을 연습한 프로젝트입니다.",
+    deployUrl: "https://router-exam-eosin.vercel.app/",
     codeUrl: "https://github.com/hmy1304/router-exam",
     thumbImage: "/images/routerproject.png",
     thumbVariant: "purple",
-    // codeFiles: [] 에 코드를 추가하세요 (예시는 '끝말잇기' 프로젝트 참조)
-    codeFiles: [],
   },
   {
     id: "weatherapp",
     title: "날씨앱",
     tags: ["Vite", "React", "JavaScript", "Scss", "OpenWeatherAPI", "Axios"],
     status: "완료",
-    desc: "공개 데이터인 OpenWeather API를 사용하여 날씨 데이터를 가져와서 이 앱에 적은 도시의 위도와 경도를 조회하여 입력한 도시의 현째 날씨에 대한 정보를 가져와서 아이콘으로 표시하고 그 날씨에 따라서 Background의 이미지와 색깔을 바꾸도록 구현하였습니다.",
+    desc: "공개 데이터인 OpenWeather API를 사용하여 날씨 데이터를 가져와서 이 앱에 적은 도시의 위도와 경도를 조회하여 입력한 도시의 현재 날씨에 대한 정보를 가져와서 아이콘으로 표시하고 그 날씨에 따라서 Background의 이미지와 색깔을 바꾸도록 구현하였습니다.",
+    deployUrl: "https://weather-api-six-phi.vercel.app/",
     codeUrl: "https://github.com/hmy1304/weather-api",
     thumbImage: "/images/weatherapp.png",
     thumbVariant: "blue",
-    // codeFiles: [] 에 코드를 추가하세요 (예시는 '끝말잇기' 프로젝트 참조)
-    codeFiles: [],
   },
   {
     id: "todolist-ver2",
     title: "TodoList ver2",
     tags: ["Vite", "React", "JavaScript", "css"],
     status: "완료",
-    desc: "이 프로젝트는 React와 TdoList를 사용하여 사용자가 입력한 할 일을 localstorage에 저장하거나 삭제할 수 있으며 항목을 필터링하는 기능도 추가하였습니다.",
+    desc: "이 프로젝트는 React와 TodoList를 사용하여 사용자가 입력한 할 일을 LocalStorage에 저장하거나 삭제할 수 있으며 항목을 필터링하는 기능도 추가하였습니다.",
+    deployUrl: "https://todolist-orpin-three-77.vercel.app/",
     codeUrl: "https://github.com/hmy1304/todolist",
     thumbImage: "/images/todolist.png",
     thumbVariant: "cyan",
-    // codeFiles: [] 에 코드를 추가하세요 (예시는 '끝말잇기' 프로젝트 참조)
-    codeFiles: [],
   },
   {
     id: "emotion",
@@ -238,11 +145,10 @@ export default App`,
     tags: ["vite", "React", "Router", "ContextAPI", "LocalStorage"],
     status: "완료",
     desc: "날짜별로 작성한 일기를 관리할 수 있으며, LocalStorage를 활용하여 일기를 작성하거나 삭제, 또는 수정할 수 있고, 작성한 일기는 작성한 날의 Date를 기준으로하여 월별로 정렬이 가능하고, 그 안에서도 최신순, 오래된 순으로도 정렬이 가능합니다.",
+    deployUrl: "https://emotion-diary-three-henna.vercel.app/",
     codeUrl: "https://github.com/hmy1304/emotion-diary",
     thumbImage: "/images/emotion.png",
     thumbVariant: "cyan",
-    // codeFiles: [] 에 코드를 추가하세요 (예시는 '끝말잇기' 프로젝트 참조)
-    codeFiles: [],
   },
   {
     id: "toilet-spot",
@@ -250,22 +156,20 @@ export default App`,
     tags: ["Vite", "React", "Open Source API"],
     status: "완료",
     desc: "공개되어 있는 위치 데이터를 경도와 위도를 가져와서 조회하며, 스타일 데이터도 따로 가져와서 css나 scss를 직접 입력하는 것이 아닌 클래스명만 변경하는 것으로 스타일을 꾸밀 수 있게 하였습니다. 또한 위치를 선택하면 지도가 자동으로 그 선택된 위치로 화면이 이동하게끔 구현하였습니다.",
+    deployUrl: "https://wifi-spot-sepia.vercel.app/",
     codeUrl: "https://github.com/hmy1304/wifi-spot",
     thumbImage: "/images/toilet-spot.png",
     thumbVariant: "cyan",
-    // codeFiles: [] 에 코드를 추가하세요 (예시는 '끝말잇기' 프로젝트 참조)
-    codeFiles: [],
   },
   {
     id: "tocobo",
     title: "TOCOBO",
     tags: ["React", "Router", "Swiper", "Scss"],
     status: "완료",
-    desc: "media query를 이용하여 창 사이즈마다 desktop, teblet, mobile 사이즈에 호환할 수 있도록 구현하였다. 스크롤을 내릴 때를 감지해서 위로 올라가는 버튼과 header의 background 색이 바뀌도록 구현하였다. swiper를 이용하여 hero, category, trend section에 옆으로 넘길수 있는 슬라이드를 추가하였다. 창이 일정 크기로 줄어들었을 때 나타나는 목록 버튼을 누르면 각각 section으로 이동할 수 있는 버튼과 바구니 버튼 등이 있는 목록 화면이 나타날 수 있도록 useEffect를 이용하여 구현하였다.",
+    desc: "media query를 이용하여 창 사이즈마다 desktop, tablet, mobile 사이즈에 호환할 수 있도록 구현하였다. 스크롤을 내릴 때를 감지해서 위로 올라가는 버튼과 header의 background 색이 바뀌도록 구현하였다. swiper를 이용하여 hero, category, trend section에 옆으로 넘길수 있는 슬라이드를 추가하였다.",
+    deployUrl: "https://mytocobo.vercel.app/",
     codeUrl: "https://github.com/hmy1304/mytocobo",
     thumbImage: "/images/tocobo.png",
     thumbVariant: "cyan",
-    // codeFiles: [] 에 코드를 추가하세요 (예시는 '끝말잇기' 프로젝트 참조)
-    codeFiles: [],
   },
 ];
